@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="nav">
+ <nav>
+<a href="">Home</a>
+<a href="">Temprature</a>
+<a href="">Wind</a>
+<a href="">Direction</a>
+</nav></div>
+
+<div class="description">
+    <p> The weather is pleasantly good today, with bright sunshine and a gentle breeze that makes 
+        being outdoors enjoyable. The sky is clear, the temperature is comfortable, and the air feels fresh and invigorating. It’s the 
+        perfect kind of day to take a walk, spend time in nature, or simply relax and appreciate the warmth of the sun. Good weather lifts the mood, energizes
+         the body, and encourages people to be active and cheerful.</p>
+</div>
+
+
+    <div class="weather-container">
+        <h1>🌤 Weather App</h1>
+
+        <input type="text" id="cityInput" placeholder="Enter city name">
+        <button onclick="getWeather()">Get Weather</button>
+
+        <div class="weather-info" id="weatherInfo">
+            <!-- Weather data will appear here -->
+    
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
