@@ -1,16 +1,36 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-}
+} */
 
 body {
     /* height: 100vh;
-    display: flex;
+   display: flex;
     justify-content: center;
     align-items: center; */
     background: linear-gradient(to right, #4facfe, #00f2fe);
+
+      align-items: center;
+      width: 100%;
+  max-width: 640px;
+}
+
+.nav {
+    margin-top: 30px;
+    border-radius:12px ;
+    font-family:'Times New Roman', Times, serif;
+    background-color: black;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-left: 400px;
+    margin-right: 300px;
+    text-align: center;
+    width: 100%;
+  max-width: 640px;
+  
+   
 }
 
 .nav a {
@@ -19,6 +39,8 @@ body {
     padding: 10px;
     font-style: italic;
    font-weight: 800;
+   
+
 
 }
 
@@ -26,18 +48,37 @@ body {
     font-style: oblique;
     margin-top: 30px;
     margin-left: 100px;
+    width: 100%;
+  max-width: 640px;
+  padding-left: 300px;
 }
 
+.image {
+margin: 0px;
+width: 0px;
+padding-left: 200px;
+
+}
+
+.img-sun{
+
+    width: 1000px;
+    border-radius: 12px;
+    height: 300px;
+    
+}
 
 .weather-container {
     background: white;
-    margin-left: 150px;
+    margin-left: 400px;
     margin-top: 100px;
     padding: 30px;
     border-radius: 12px;
     text-align: center;
-    width: 1000px;
+    /* width: 1000px; */
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 100%;
+  max-width: 640px;
 }
 
 .weather-container h1 {
@@ -61,6 +102,9 @@ button {
     border-radius: 5px;
 }
 
+
+
+
 button:hover {
     background: #00c6ff;
 }
@@ -69,15 +113,5 @@ button:hover {
     margin-top: 20px;
 }
 
-.nav {
-    margin-top: 30px;
-    border-radius:12px ;
-    font-family:'Times New Roman', Times, serif;
-    background-color: black;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    margin-left: 150px;
-    margin-right: 300px;
-    text-align: center;
-}
+
 
