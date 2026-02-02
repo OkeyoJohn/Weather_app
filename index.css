@@ -10,7 +10,7 @@ body {
    display: flex;
     justify-content: center;
     align-items: center; */
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+   background-color: rgb(96, 29, 29);
 
       align-items: center;
       width: 100%;

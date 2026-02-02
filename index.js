@@ -1,5 +1,14 @@
+ import { DotLottie } from '@lottiefiles/dotlottie-web';
+
 const weatherInfo = document.getElementById("weatherInfo");
 const cityInput = document.getElementById("cityInput");
+
+const dotLottie = new DotLottie({
+    autoplay: true,
+    loop: true,
+    canvas: document.querySelector('#dotlottie-canvas'),
+    src: "<git >", // replace with your .lottie or .json file URL
+});
 
 // Auto-load Nairobi 🇰🇪
 window.addEventListener("load", () => {
@@ -40,4 +49,8 @@ function getWeather(cityParam) {
         .catch(() => {
             weatherInfo.innerHTML = "<p>❌ Unable to fetch weather</p>";
         });
+       
+
+
+
 }
