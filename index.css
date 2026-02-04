@@ -17,14 +17,22 @@ body {
   max-width: 640px;
 }
 
+.logo {
+    width: 80px;       
+    margin-bottom: -30px;
+    margin-left: 50px;
+
+}
+
+
 .nav {
-    margin-top: 30px;
+    margin-top: 0px;
     border-radius:12px ;
     font-family:'Times New Roman', Times, serif;
-    background-color: black;
+    /* background-color: black; */
     padding-bottom: 20px;
     padding-top: 20px;
-    margin-left: 400px;
+    margin-left: 300px;
     margin-right: 300px;
     text-align: center;
     width: 100%;
@@ -34,29 +42,37 @@ body {
 }
 
 .nav a {
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
     border-radius: 12px;
     padding: 10px;
     font-style: italic;
    font-weight: 800;
+   color: white;
+text-decoration: none;
+font-size: 20px;
    
 
 
 }
 
+a:hover {
+  text-decoration: underline; /* underline only on hover */
+}
+
 .description {
     font-style: oblique;
     margin-top: 30px;
-    margin-left: 100px;
+    margin-left: 50px;
     width: 100%;
   max-width: 640px;
   padding-left: 300px;
+  color: rgb(165, 169, 171);
 }
 
 .image {
 margin: 0px;
 width: 0px;
-padding-left: 200px;
+padding-left: 150px;
 
 }
 
@@ -69,8 +85,8 @@ padding-left: 200px;
 }
 
 .weather-container {
-    background: white;
-    margin-left: 400px;
+    /* background: white; */
+    margin-left: 300px;
     margin-top: 100px;
     padding: 30px;
     border-radius: 12px;
@@ -79,6 +95,7 @@ padding-left: 200px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     width: 100%;
   max-width: 640px;
+  color: aliceblue;
 }
 
 .weather-container h1 {

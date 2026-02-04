@@ -1,21 +1,14 @@
- import { DotLottie } from '@lottiefiles/dotlottie-web';
+const apiKey = "stYdmKnuHtfyfSMiCtBeAk2i2Ha8uBhd";
 
 const weatherInfo = document.getElementById("weatherInfo");
 const cityInput = document.getElementById("cityInput");
 
-const dotLottie = new DotLottie({
-    autoplay: true,
-    loop: true,
-    canvas: document.querySelector('#dotlottie-canvas'),
-    src: "<git >", // replace with your .lottie or .json file URL
-});
+// Auto-load Nairobi on page load 🇰🇪
+// window.addEventListener("load", () => {
+//     getWeather("Nairobi");
+// });
 
-// Auto-load Nairobi 🇰🇪
-window.addEventListener("load", () => {
-    getWeather("Nairobi");
-});
-
-function getWeather(cityParam) {
+async function getWeather(cityParam) {
     const city = cityParam || cityInput.value.trim();
 
     if (!city) {
@@ -25,32 +18,37 @@ function getWeather(cityParam) {
 
     weatherInfo.innerHTML = "<p>Loading...</p>";
 
-    // Nairobi coordinates (default)
-    const cities = {
-        Nairobi: { lat: -1.2921, lon: 36.8219 },
-        Mombasa: { lat: -4.0435, lon: 39.6682 },
-        Kisumu: { lat: -0.0917, lon: 34.7680 }
-    };
+    try {
+        // Convert city → coordinates (using Open-Meteo geocoding – no key needed)
+        const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`);
+        const geoData = await geoRes.json();
 
-    const location = cities[city] || cities["Nairobi"];
+        if (!geoData.results || geoData.results.length === 0) {
+            weatherInfo.innerHTML = "<p>❌ City not found</p>";
+            return;
+        }
 
-    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lon}&current_weather=true`)
-        .then(res => res.json())
-        .then(data => {
-            const weather = data.current_weather;
+        const { latitude, longitude, name, country } = geoData.results[0];
 
-            weatherInfo.innerHTML = `
-                <h3>${city}</h3>
-                <p>🌡 Temperature: ${weather.temperature} °C</p>
-                <p>💨 Wind: ${weather.windspeed} km/h</p>
-                <p>🧭 Direction: ${weather.winddirection}°</p>
-            `;
-        })
-        .catch(() => {
-            weatherInfo.innerHTML = "<p>❌ Unable to fetch weather</p>";
-        });
-       
+        //  Call Tomorrow.io with coordinates
+        const res = await fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${latitude},${longitude}&apikey=${apiKey}`);
+        const data = await res.json();
 
+        if (data.code) {
+            weatherInfo.innerHTML = `<p>❌ ${data.message || "API error"}</p>`;
+            return;
+        }
 
+        const values = data.data.values;
 
+        weatherInfo.innerHTML = `
+            <h3>${name}, ${country}</h3>
+            <p>🌡 Temperature: ${values.temperature} °C</p>
+            <p>☁ Weather code: ${values.weatherCode}</p>
+            <p>💨 Wind: ${values.windSpeed} km/h</p>
+        `;
+    } catch (err) {
+        console.error(err);
+        weatherInfo.innerHTML = "<p>❌ Network error</p>";
+    }
 }
