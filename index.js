@@ -1,6 +1,5 @@
 const apiKey = "stYdmKnuHtfyfSMiCtBeAk2i2Ha8uBhd";
 
-const weatherInfo = document.getElementById("weatherInfo");
 const cityInput = document.getElementById("cityInput");
 
 // Auto-load Nairobi on page load 🇰🇪
@@ -24,7 +23,7 @@ async function getWeather(cityParam) {
         const geoData = await geoRes.json();
 
         if (!geoData.results || geoData.results.length === 0) {
-            weatherInfo.innerHTML = "<p>❌ City not found</p>";
+            weatherInfo.innerHTML = "<p>City not found</p>";
             return;
         }
 
@@ -35,7 +34,7 @@ async function getWeather(cityParam) {
         const data = await res.json();
 
         if (data.code) {
-            weatherInfo.innerHTML = `<p>❌ ${data.message || "API error"}</p>`;
+            weatherInfo.innerHTML = `<p> ${data.message || "API error"}</p>`;
             return;
         }
 
@@ -49,6 +48,6 @@ async function getWeather(cityParam) {
         `;
     } catch (err) {
         console.error(err);
-        weatherInfo.innerHTML = "<p>❌ Network error</p>";
+        weatherInfo.innerHTML = "<p>Network error</p>";
     }
 }
